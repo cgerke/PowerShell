@@ -57,9 +57,13 @@ If (-not $env:PATH.contains("Git")) {
 }
 
 # Chocolatey
-$InstallDir='C:\ProgramData\chocoportable'
-$env:ChocolateyInstall="$InstallDir"
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# $InstallDir='C:\ProgramData\chocoportable'
+# $env:ChocolateyInstall="$InstallDir"
+# Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
 
 # Fetch REPO
 $PSUser = Split-Path ((Get-Item $profile).DirectoryName) -Parent
