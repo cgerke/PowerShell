@@ -8,6 +8,11 @@ Push-Location "$PSRoot\PowerShell"
     Invoke-Expression ". .\Microsoft.PowerShell_$_.ps1"
 }
 
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
 function Test-IsAdmin {
   $user = [Security.Principal.WindowsIdentity]::GetCurrent();
   (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
