@@ -36,8 +36,7 @@ If (-not (Test-Path -Path "C:\Program Files\PowerShell\6\pwsh.exe")) {
 }
 
 # Modules
-# Learn more about Repository vs Package Provider
-"PowerShellGet","WindowsCompatibility","posh-git" | ForEach-Object -process {
+"PowerShellGet","WindowsCompatibility","Pester","PSScriptAnalyzer","posh-git" | ForEach-Object -process {
   if (-not (Get-Module -ListAvailable -Name "$_")) {
     Install-Module "$_" -Scope CurrentUser -Force -Confirm:$false -Verbose:($PSBoundParameters['Verbose'] -eq $true)
   }
