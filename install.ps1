@@ -10,8 +10,9 @@
 #>
 
 # Install PowerShell Core
-If (-not (Test-Path -Path "C:\Program Files\PowerShell\6\pwsh.exe")) {
-  Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1) } -UseMSI"
+$pwshcore = $(Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*  | Where-Object {$_.DisplayName -like "*PowerShell*" })
+If (-not ($pwshcore)) {
+  winget install --id Microsoft.PowerShell --silent
 }
 
 <# Learn more about Repository vs Package Provider
