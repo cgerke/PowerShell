@@ -15,13 +15,6 @@ If (-not ($pwshcore)) {
   winget install --id Microsoft.PowerShell --silent
 }
 
-<# Learn more about Repository vs Package Provider
-  Nuget requires PSGallery Trust
-  PowerShellGet requires PSGallery
-  WindowsCompatiblity requires Nuget 
-  ???
-#>
-
 # Repositories
 "PSGallery" | ForEach-Object -process {
   if (-not (Get-PSRepository -Name "$_")) {
@@ -29,15 +22,15 @@ If (-not ($pwshcore)) {
   }
 }
 
-# Package Provider
+# Package Provider (requires PSGallery Trust)
 "Nuget" | ForEach-Object -process {
   if (-not (Get-PackageProvider -Name "$_")) {
     Install-PackageProvider -Name "$_" -Scope CurrentUser -Force -Verbose:($PSBoundParameters['Verbose'] -eq $true)
   }
 }
 
-# Modules
-"PowerShellGet","WindowsCompatibility","Pester","PSScriptAnalyzer","posh-git" | ForEach-Object -process {
+# Modules (Requires Nuget)
+"PowerShellGet","WindowsCompatibility","Pester","PSScriptAnalyzer","Plaster","posh-git" | ForEach-Object -process {
   if (-not (Get-Module -ListAvailable -Name "$_")) {
     Install-Module "$_" -Scope CurrentUser -Force -Confirm:$false -Verbose:($PSBoundParameters['Verbose'] -eq $true)
   }
