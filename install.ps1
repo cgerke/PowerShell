@@ -10,7 +10,7 @@
 #>
 
 # Install PowerShell Core
-$pwshcore = $(Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*  | Where-Object {$_.DisplayName -like "*PowerShell*" })
+$pwshcore = $(Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*  | Where-Object {$_.DisplayName -like "*PowerShell*"})
 If (-not ($pwshcore)) {
   winget install --id Microsoft.PowerShell --silent
 }
@@ -44,8 +44,9 @@ If (-not ($pwshcore)) {
 }
 
 # Git
-If (-not $env:PATH.contains("Git")) {
-  winget install git
+$git = $(Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*  | Where-Object {$_.DisplayName -like "*Git*"})
+If (-not ($git)) {
+  winget install --id Git.Git --silent
 }
 
 # Fetch REPO
