@@ -4,5 +4,15 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.exclude": {
+			"**/*.exe": true
+		},
+		"telemetry.enableTelemetry": false,
+		"powershell.codeFormatting.autoCorrectAliases": true,
+		"powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+		"powershell.codeFormatting.useCorrectCasing": true,
+		"powershell.codeFormatting.preset": "Allman",
+		"powershell.codeFormatting.whitespaceBetweenParameters": true
+	}
 }
