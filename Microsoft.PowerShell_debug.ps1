@@ -21,3 +21,13 @@ function Get-Ssh {
 function Get-Sandbox {
   Enable-WindowsOptionalFeature -FeatureName "Containers-DisposableClientVM" -All -Online
 }
+
+$PSRoot = Split-Path ((Get-Item $profile).DirectoryName) -Parent
+
+# . source
+Push-Location "$PSRoot\PowerShell"
+"preferences","debug" |
+  Where-Object {Test-Path "Microsoft.PowerShell_$_.ps1"} |
+  ForEach-Object -process {
+    Invoke-Expression ". .\Microsoft.PowerShell_$_.ps1"
+}

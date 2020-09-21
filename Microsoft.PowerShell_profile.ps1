@@ -1,19 +1,10 @@
-$PSRoot = Split-Path ((Get-Item $profile).DirectoryName) -Parent
-
-# . source
-Push-Location "$PSRoot\PowerShell"
-"preferences","debug" |
-  Where-Object {Test-Path "Microsoft.PowerShell_$_.ps1"} |
-  ForEach-Object -process {
-    Invoke-Expression ". .\Microsoft.PowerShell_$_.ps1"
-}
-
 function Test-IsAdmin {
   $user = [Security.Principal.WindowsIdentity]::GetCurrent();
   (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
 function prompt {
+
   # Powershell version
   $PSVersionTable.PSVersion |
     ForEach-Object -process { "$_ " } |
@@ -27,7 +18,6 @@ function prompt {
     Write-Host " $env:USERNAME " -NoNewline -ForegroundColor White
   }
 
-  # Host
   Write-Host "$env:COMPUTERNAME " -NoNewline -ForegroundColor White
   Write-Host $ExecutionContext.SessionState.Path.CurrentLocation -ForegroundColor Gray -NoNewline
   Write-VcsStatus
