@@ -5,5 +5,5 @@
 !Microsoft.PowerShell_debug.ps1
 !Microsoft.PowerShell_profile.ps1
 !Microsoft.PowerShell.code-workspace
-!powershell.json
+!PSScriptAnalyzerSettings.psd1
 !README.md
