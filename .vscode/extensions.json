@@ -2,5 +2,8 @@
     "recommendations": [
         "vscodevim.vim",
         "ms-vscode.powershell",
+        "msazurermtools.azurerm-vscode-tools",
+        "ms-vscode.vscode-node-azure-pack",
+        "eamodio.gitlens"
     ]
 }
