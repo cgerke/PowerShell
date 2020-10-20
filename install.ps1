@@ -29,7 +29,7 @@ If (-not ($pwshcore)) {
 # Modules (Requires Nuget)
 "PowerShellGet","WindowsCompatibility","Pester","PSScriptAnalyzer","Plaster","oh-my-posh","posh-git" | ForEach-Object -process {
   if (-not (Get-Module -ListAvailable -Name "$_")) {
-    Install-Module "$_" -Scope CurrentUser -Force -Confirm:$false -Verbose
+    Install-Module -Name "$_" -Scope CurrentUser -Force -Confirm:$false -Verbose
   }
 }
 
@@ -61,5 +61,6 @@ New-TemporaryFile | ForEach-Object {
   Start-Process "git" -ArgumentList "checkout master" -Wait -NoNewWindow
   Start-Process "git" -ArgumentList "push --set-upstream origin master" -Wait -NoNewWindow
   Move-Item -Path .\.git -Destination "$PWShell\" -Force -ErrorAction SilentlyContinue
+  Set-Location "$PSRoot"
   Set-Location "$PWShell"
 }
