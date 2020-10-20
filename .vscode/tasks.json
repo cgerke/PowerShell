@@ -16,17 +16,8 @@
     "tasks": [
         {
             "label": "Install",
-            "type": "shell",
-            "command": "${cwd}\install.ps1",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "Install Verbose",
-            "type": "shell",
-            "command": "${cwd}\install.ps1 -Verbose",
+            "type" : "shell",
+            "command" : "${cwd}/insall.ps1",
             "group": {
                 "kind": "build",
                 "isDefault": true
