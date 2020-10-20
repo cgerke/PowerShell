@@ -65,4 +65,6 @@ New-TemporaryFile | ForEach-Object {
   Start-Process "git" -ArgumentList "reset --hard origin/master" -Wait -NoNewWindow
   Set-Location "$PSRoot"
   Set-Location "$PWShell"
+  Add-Type -AssemblyName System.Windows.Forms
+  [System.Windows.Forms.SendKeys]::SendWait("%n{ENTER}")
 }
