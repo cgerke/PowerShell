@@ -61,6 +61,8 @@ New-TemporaryFile | ForEach-Object {
   Start-Process "git" -ArgumentList "checkout master" -Wait -NoNewWindow
   Start-Process "git" -ArgumentList "push --set-upstream origin master" -Wait -NoNewWindow
   Move-Item -Path .\.git -Destination "$PWShell\" -Force -ErrorAction SilentlyContinue
+  Set-Location "$PWShell"
+  Start-Process "git" -ArgumentList "reset --hard origin/master" -Wait -NoNewWindow
   Set-Location "$PSRoot"
   Set-Location "$PWShell"
 }
