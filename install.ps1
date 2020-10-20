@@ -43,8 +43,8 @@ If (-not ($git)) {
 New-Item -Path $Profile -Type File
 $PSRoot = Split-Path ((Get-Item $profile).DirectoryName) -Parent
 $PWShell = "$PSRoot\PowerShell"
-Remove-Item -Path "$PWShell\.git" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
-Remove-Item -Path $Profile -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "$PWShell\.git" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path $Profile -Force -ErrorAction SilentlyContinue
 
 <# TODO Need to investigate this further, why does this environment var
 cause git init to fail? Should I just (temporarily remove HOMEPATH)
@@ -60,6 +60,6 @@ New-TemporaryFile | ForEach-Object {
   Start-Process "git" -ArgumentList "fetch --all" -Wait -NoNewWindow
   Start-Process "git" -ArgumentList "checkout master" -Wait -NoNewWindow
   Start-Process "git" -ArgumentList "push --set-upstream origin master" -Wait -NoNewWindow
-  Move-Item -Path .\.git -Destination "$PWShell\" -Force -Verbose
+  Move-Item -Path .\.git -Destination "$PWShell\" -Force -ErrorAction SilentlyContinue
   Set-Location "$PWShell"
 }
