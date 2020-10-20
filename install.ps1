@@ -30,7 +30,7 @@ If (-not ($pwshcore)) {
 }
 
 # Modules (Requires Nuget)
-"PowerShellGet","WindowsCompatibility","Pester","PSScriptAnalyzer","Plaster","posh-git" | ForEach-Object -process {
+"PowerShellGet","WindowsCompatibility","Pester","PSScriptAnalyzer","Plaster","oh-my-posh","posh-git" | ForEach-Object -process {
   if (-not (Get-Module -ListAvailable -Name "$_")) {
     Install-Module "$_" -Scope CurrentUser -Force -Confirm:$false -Verbose:($PSBoundParameters['Verbose'] -eq $true)
   }
@@ -43,9 +43,11 @@ If (-not ($git)) {
 }
 
 # Fetch REPO
+New-Item -Path $Profile -Type File
 $PSUser = Split-Path ((Get-Item $profile).DirectoryName) -Parent
 $PWShell = "$PSUser\PowerShell"
 Remove-Item -Path "$PWShell\.git" -Recurse -Force -Verbose:($PSBoundParameters['Verbose'] -eq $true) -ErrorAction SilentlyContinue
+Remove-Item -Path $Profile
 
 <# TODO Need to investigate this further, why does this environment var
 cause git init to fail? Should I just (temporarily remove HOMEPATH)
