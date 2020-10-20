@@ -51,7 +51,7 @@ cause git init to fail? Should I just (temporarily remove HOMEPATH)
 Remove-Item Env:\HOMEPATH
 -or #>
 New-TemporaryFile | ForEach-Object {
-  Remove-Item "$_" -Force -Verbose
+  Remove-Item "$_" -Force -ErrorAction SilentlyContinue
   New-Item -Path "$_" -ItemType Directory -Force -Verbose
   Set-Location "$_"
   Set-Item -Path Env:HOME -Value $Env:USERPROFILE
