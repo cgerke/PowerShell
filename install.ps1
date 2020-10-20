@@ -36,7 +36,7 @@ If (-not ($pwshcore)) {
 # Git
 $git = $(Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*  | Where-Object {$_.DisplayName -like "*Git*"})
 If (-not ($git)) {
-  winget install --id Git.Git --silent
+  Start-Process "winget" -ArgumentList "install --id Git.Git --silent" -Wait -NoNewWindow
 }
 
 # Fetch REPO
