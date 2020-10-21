@@ -15,7 +15,7 @@
 		"powershell.codeFormatting.preset": "Allman",
 		"powershell.codeFormatting.whitespaceBetweenParameters": true,
 		"terminal.integrated.shell.windows": "c:\\Program Files\\PowerShell\\7\\pwsh.exe",
-		"terminal.integrated.shellArgs.windows": "-ExecutionPolicy RemoteSigned"
+		"terminal.integrated.shellArgs.windows": ["-ExecutionPolicy","RemoteSigned"]
 	},
 	"launch": {
 		"version": "0.2.0",
