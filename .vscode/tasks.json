@@ -7,7 +7,7 @@
                 "args": [
                     "-NoProfile",
                     "-ExecutionPolicy",
-                    "Remote Signed",
+                    "RemoteSigned",
                     "-Command"
                 ]
             }
