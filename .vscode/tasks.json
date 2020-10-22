@@ -15,7 +15,7 @@
     },
     "tasks": [
         {
-            "label": "Install",
+            "label": "Initialise Project",
             "type" : "shell",
             "command" : "${cwd}/init.ps1",
             "group": {
