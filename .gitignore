@@ -1,7 +1,7 @@
 /*
 !.gitignore
 !.vscode
-!install.ps1
+!init.ps1
 !Microsoft.PowerShell.code-workspace
 !Microsoft.VSCode_profile.ps1
 !powershell.config.json
